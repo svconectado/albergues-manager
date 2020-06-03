@@ -27,7 +27,13 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: '~plugins/axios.js', ssr: false }],
+  /*
+   ** https://nuxtjs.org/guide/routing/#middleware
+   */
+  router: {
+    middleware: ['axios']
+  },
   /*
    ** Nuxt.js dev-modules
    */
