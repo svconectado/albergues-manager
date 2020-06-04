@@ -9,18 +9,36 @@
         Albergues Manager
       </h2>
       <div class="links">
-        <nuxt-link to="/personas">Personas</nuxt-link>
+        <nuxt-link v-if="!token" to="/login" class="button-link">
+          Login
+        </nuxt-link>
+        <nuxt-link v-if="token" to="/personas" class="button-link">
+          Personas
+        </nuxt-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import _ from 'lodash'
 import Logo from '~/components/Logo.vue'
 
 export default {
   components: {
     Logo
+  },
+  data() {
+    return {
+      token: null
+    }
+  },
+  mounted() {
+    this.token = _.get(
+      this.$axios,
+      'defaults.headers.common.Authorization',
+      null
+    )
   }
 }
 </script>
@@ -33,6 +51,10 @@ export default {
 */
 .container {
   @apply min-h-screen flex justify-center items-center text-center mx-auto;
+}
+
+.button-link {
+  @apply border p-4 bg-blue-500;
 }
 
 .title {

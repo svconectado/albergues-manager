@@ -9,5 +9,4 @@
 
 export default function({ $axios }) {
   $axios.setBaseURL(process.env.BASE_URL_API)
-  $axios.setToken(process.env.TOKEN_HOSTEL_MANAGER, 'Bearer')
 }
