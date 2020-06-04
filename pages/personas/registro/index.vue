@@ -125,7 +125,12 @@
         />
       </div>
       <div>
-        <button type="button" @click="savePerson">Guardar</button>
+        <span>{{ messageRequest }}</span>
+      </div>
+      <div>
+        <button type="button" class="save-button" @click="savePerson">
+          Guardar
+        </button>
       </div>
     </form>
   </div>
@@ -152,11 +157,11 @@ export default {
       disease_details: '',
       prescription: false,
       prescription_details: '',
-      department: null,
       municipality: null,
       departments: [],
       municipalities: [],
-      municipalitiesFiltered: []
+      municipalitiesFiltered: [],
+      messageRequest: ''
     }
   },
   mounted() {
@@ -200,16 +205,18 @@ export default {
         prescription_details: this.prescription_details,
         municipality: this.municipality
       }
+      this.messageRequest = 'Espera...'
       this.$axios
         .post('people', data)
-        .then((res) => res)
-        .catch((err) => err)
+        .then(() => (this.messageRequest = 'Persona registrada con éxito'))
+        .catch(() => (this.messageRequest = 'Ocurrió un error'))
     }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.register {
+.save-button {
+  @apply border p-4 mb-16 bg-blue-500;
 }
 </style>
