@@ -4,7 +4,7 @@ export default {
    ** Headers of the page
    */
   head: {
-    title: process.env.npm_package_name || '',
+    title: 'Albergues Manager',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -23,11 +23,17 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['~/assets/scss/base.scss'],
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: [{ src: '~plugins/axios.js', ssr: false }],
+  /*
+   ** https://nuxtjs.org/guide/routing/#middleware
+   */
+  router: {
+    middleware: ['axios']
+  },
   /*
    ** Nuxt.js dev-modules
    */
@@ -53,12 +59,30 @@ export default {
    */
   axios: {},
   /*
+   ** SASS Loader
+   **
+   */
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ['vue-style-loader', 'css-loader', 'sass-loader']
+      }
+    ]
+  },
+  /*
    ** Build configuration
    */
   build: {
     /*
      ** You can extend webpack config here
      */
+    hotMiddleware: {
+      client: {
+        // turn off client overlay when errors are present
+        overlay: false
+      }
+    },
     extend(config, ctx) {}
   }
 }
