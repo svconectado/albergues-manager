@@ -1,6 +1,6 @@
-# am-i-in-my-municipality
+# Albergues Manager Demo
 
-> Website to know if on quarantine; Am I in my Municipality?
+> Demo
 
 ## Build Setup
 

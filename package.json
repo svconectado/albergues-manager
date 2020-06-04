@@ -1,8 +1,8 @@
 {
-  "name": "albergues",
+  "name": "albergues-manager",
   "version": "1.0.0",
   "description": "Control de albergues",
-  "author": "",
+  "author": "El Salvador Conectado",
   "private": true,
   "scripts": {
     "dev": "nuxt",
