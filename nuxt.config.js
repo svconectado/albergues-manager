@@ -27,7 +27,10 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [{ src: '~plugins/axios.js', ssr: false }],
+  plugins: [
+    { src: '~plugins/axios.js', ssr: false },
+    { src: '~plugins/vee-validate.js', ssr: false }
+  ],
   /*
    ** https://nuxtjs.org/guide/routing/#middleware
    */
