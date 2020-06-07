@@ -125,6 +125,26 @@
             placeholder=""
           />
         </div>
+        <validate-input rules="required">
+          <label for="">Filtro albergues</label>
+          <select class="" @change="changeDepartmentHostelsFilter">
+            <option
+              v-for="depto in departments"
+              :key="depto._id"
+              :value="depto._id"
+            >
+              {{ depto.name }}
+            </option>
+          </select>
+        </validate-input>
+        <validate-input rules="required">
+          <label for="">Albergue</label>
+          <select v-model="hostel" class="">
+            <option v-for="h in hostelsFiltered" :key="h._id" :value="h._id">
+              {{ h.name }}
+            </option>
+          </select>
+        </validate-input>
         <div>
           <span>{{ messageRequest }}</span>
         </div>
@@ -168,6 +188,9 @@ export default {
       departments: [],
       municipalities: [],
       municipalitiesFiltered: [],
+      hostel: null,
+      hostels: [],
+      hostelsFiltered: [],
       messageRequest: ''
     }
   },
@@ -184,6 +207,14 @@ export default {
         this.changeDepartment(this.departments[0]._id)
       })
       .catch((err) => err)
+
+    this.$axios
+      .get('hostels')
+      .then((res) => {
+        this.hostels = res.data
+        this.changeDepartmentHostelsFilter(this.departments[0]._id)
+      })
+      .catch((err) => err)
   },
   methods: {
     changeDepartment(depto) {
@@ -192,9 +223,21 @@ export default {
         this.municipalities,
         (m) => m.department._id === deptoId
       )
+
       this.municipality =
         this.municipalitiesFiltered.length > 0
           ? _.values(this.municipalitiesFiltered)[0]._id
+          : null
+    },
+    changeDepartmentHostelsFilter(depto) {
+      const deptoId = _.get(depto, 'target.value') ? depto.target.value : depto
+      this.hostelsFiltered = _.filter(
+        this.hostels,
+        (h) => h.municipality.department === deptoId
+      )
+      this.hostel =
+        this.hostelsFiltered.length > 0
+          ? _.values(this.hostelsFiltered)[0]._id
           : null
     },
     savePerson() {
@@ -217,7 +260,8 @@ export default {
           disease_details: this.disease_details,
           prescription: this.prescription,
           prescription_details: this.prescription_details,
-          municipality: this.municipality
+          municipality: this.municipality,
+          hostel: this.hostel
         }
         this.messageRequest = 'Espera...'
         this.$axios

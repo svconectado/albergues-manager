@@ -15,6 +15,9 @@
         <nuxt-link v-if="token" to="/personas" class="button-link">
           Personas
         </nuxt-link>
+        <nuxt-link v-if="token" to="/albergues" class="button-link">
+          Albergues
+        </nuxt-link>
       </div>
     </div>
   </div>
