@@ -141,7 +141,7 @@
           <label for="">Albergue</label>
           <select v-model="hostel" class="">
             <option v-for="h in hostelsFiltered" :key="h._id" :value="h._id">
-              {{ h.nombre }}
+              {{ h.name }}
             </option>
           </select>
         </validate-input>
@@ -209,7 +209,7 @@ export default {
       .catch((err) => err)
 
     this.$axios
-      .get('albergues')
+      .get('hostels')
       .then((res) => {
         this.hostels = res.data
         this.changeDepartmentHostelsFilter(this.departments[0]._id)
@@ -261,7 +261,7 @@ export default {
           prescription: this.prescription,
           prescription_details: this.prescription_details,
           municipality: this.municipality,
-          albergue: this.hostel
+          hostel: this.hostel
         }
         this.messageRequest = 'Espera...'
         this.$axios
