@@ -43,7 +43,7 @@ export default {
         .then((res) => {
           this.messageRequest = 'Datos correctos'
           this.$axios.setToken(res.data.jwt, 'Bearer')
-          this.$router.push('/')
+          this.$router.push('/dashboard')
         })
         .catch(() => (this.messageRequest = 'Ocurrió un error'))
     }
