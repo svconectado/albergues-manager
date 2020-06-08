@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <h1>Albergues list</h1>
-    <nuxt-link to="/albergues/registro">Registro</nuxt-link>
+    <h1>People list</h1>
+    <nuxt-link to="/dashboard/personas/registro">Registro</nuxt-link>
   </div>
 </template>
 
