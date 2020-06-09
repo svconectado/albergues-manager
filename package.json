@@ -24,6 +24,7 @@
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "cookie-universal-nuxt": "^2.1.4",
     "js-cookie": "^2.2.1",
     "json-schema": "^0.2.5",
     "lodash": "^4.17.15",

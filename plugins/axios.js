@@ -4,7 +4,13 @@
  * in each request, as double verification of the
  * user's session.
  */
+import _ from 'lodash'
 
-export default function({ $axios }) {
+export default function({ $axios, store }) {
   $axios.setBaseURL(process.env.BASE_URL_API)
+  const userWithToken = _.get(store, 'state.users.user.jwt', false)
+  $axios.setToken(false)
+  if (userWithToken) {
+    $axios.setToken(userWithToken, 'Bearer')
+  }
 }
