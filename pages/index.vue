@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
+
 export default {
   components: {},
   data() {
@@ -32,17 +34,17 @@ export default {
     }
   },
   methods: {
+    ...mapActions({
+      loginUser: 'users/loginUser'
+    }),
     login() {
-      const data = {
+      this.messageRequest = 'Espera...'
+      this.loginUser({
         identifier: this.username,
         password: this.password
-      }
-      this.messageRequest = 'Espera...'
-      this.$axios
-        .post('auth/local', data)
+      })
         .then((res) => {
           this.messageRequest = 'Datos correctos'
-          this.$axios.setToken(res.data.jwt, 'Bearer')
           this.$router.push('/dashboard')
         })
         .catch(() => (this.messageRequest = 'Ocurrió un error'))
