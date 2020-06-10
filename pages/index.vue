@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 
 export default {
   components: {},
@@ -32,6 +32,14 @@ export default {
       password: '',
       messageRequest: ''
     }
+  },
+  computed: {
+    ...mapState({
+      user: (state) => state.users.user
+    })
+  },
+  mounted() {
+    if (this.user.logged) this.$router.push('/dashboard')
   },
   methods: {
     ...mapActions({

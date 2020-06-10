@@ -4,7 +4,7 @@
       <span>
         {{ user.user.username }}
       </span>
-      <button type="button" @click="logoutUser">
+      <button type="button" @click="logout">
         Cerrar sesión
       </button>
     </div>
@@ -23,7 +23,10 @@ export default {
   methods: {
     ...mapActions({
       logoutUser: 'users/logoutUser'
-    })
+    }),
+    logout() {
+      this.logoutUser().then(() => this.$router.push('/'))
+    }
   }
 }
 </script>
