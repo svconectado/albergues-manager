@@ -1,18 +1,17 @@
 <template>
   <div class="container">
     <div>
-      <logo />
       <h1 class="title">
         Albergues Manager
       </h1>
       <h2 class="subtitle">
         Albergues Manager
       </h2>
-      <div class="links">
-        <nuxt-link v-if="token" to="/dashboard/personas" class="button-link">
+      <div v-if="user.logged" class="links">
+        <nuxt-link to="/dashboard/personas" class="button-link">
           Personas
         </nuxt-link>
-        <nuxt-link v-if="token" to="/dashboard/albergues" class="button-link">
+        <nuxt-link to="/dashboard/albergues" class="button-link">
           Albergues
         </nuxt-link>
       </div>
@@ -21,24 +20,13 @@
 </template>
 
 <script>
-import _ from 'lodash'
-import Logo from '~/components/Logo.vue'
+import { mapState } from 'vuex'
 
 export default {
-  components: {
-    Logo
-  },
-  data() {
-    return {
-      token: null
-    }
-  },
-  mounted() {
-    this.token = _.get(
-      this.$axios,
-      'defaults.headers.common.Authorization',
-      null
-    )
+  computed: {
+    ...mapState({
+      user: (state) => state.users.user
+    })
   }
 }
 </script>

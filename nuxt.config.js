@@ -35,7 +35,7 @@ export default {
    ** https://nuxtjs.org/guide/routing/#middleware
    */
   router: {
-    middleware: ['axios']
+    middleware: ['axios', 'auth']
   },
   /*
    ** Nuxt.js dev-modules
@@ -54,7 +54,9 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    // Doc: https://github.com/microcipcip/cookie-universal/tree/master/packages/cookie-universal-nuxt
+    'cookie-universal-nuxt'
   ],
   /*
    ** Axios module configuration
