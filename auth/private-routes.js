@@ -27,6 +27,9 @@ const routes = {
     '/dashboard/albergues',
     '/dashboard/albergues/registro'
   ],
-  hostel_manager: []
+  hostel_manager: [],
+  Director: [
+  '/dashboard/personas/registro',
+  ]
 }
 export default routes
