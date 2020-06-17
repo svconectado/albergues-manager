@@ -28,7 +28,7 @@ const routes = {
     '/dashboard/albergues/registro'
   ],
   hostel_manager: [],
-  Director: [
+  director: [
   '/dashboard/personas/registro',
   ]
 }
