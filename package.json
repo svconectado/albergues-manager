@@ -28,7 +28,7 @@
     "js-cookie": "^2.2.1",
     "json-schema": "^0.2.5",
     "lodash": "^4.17.15",
-    "nuxt": "^2.0.0",
+    "nuxt": "^3.4.3",
     "vee-validate": "^3.3.2",
     "vuex-persistedstate": "^3.0.1"
   },
